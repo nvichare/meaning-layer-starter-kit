@@ -1,0 +1,5 @@
+term_uri,name,definition,synonyms,parent_term_uri,steward,status,last_reviewed_at,review_cadence_days,linked_asset_uris
+https://example.com/enterprise-ai/ActiveCustomerTerm,Active Customer,A customer with at least one qualifying transaction in the trailing 12 months.,,https://example.com/enterprise-ai/CustomerTerm,Growth Analytics,Approved,2025-10-01,90,https://example.com/enterprise-ai/Customer360View
+https://example.com/enterprise-ai/CustomerTerm,Customer,A party with an active or historical commercial relationship with the enterprise.,Buyer|Client,,Customer Data Council,Approved,2026-05-20,90,https://example.com/enterprise-ai/CustomerMasterTable
+https://example.com/enterprise-ai/CustomerPIIPolicyTerm,Customer PII Policy,Customer-identifying fields must be masked outside approved operational and compliance workflows.,,,Privacy Office,Approved,2026-05-30,30,
+https://example.com/enterprise-ai/NetRevenueTerm,Net Revenue,"Recognized gross revenue less contractual discounts, returns, credits, and rebates.",,,Finance Analytics,Approved,2026-04-15,60,https://example.com/enterprise-ai/RevenueMart

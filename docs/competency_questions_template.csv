@@ -1,0 +1,2 @@
+id,question,business_decision,expected_concept_or_relationship,expected_source_asset,owner,test_query,status
+CQ-001,What qualifies as an active customer?,Customer engagement decision,Active Customer,,Growth Analytics,,Draft

@@ -1,0 +1,12 @@
+[
+  {
+    "concept_uri": "https://example.com/enterprise-ai/NetRevenueTerm",
+    "label": "Net Revenue",
+    "definition": "Recognized gross revenue less contractual discounts, returns, credits, and rebates.",
+    "steward": "Finance Analytics",
+    "status": "Approved",
+    "calculation_logic": "SUM(gross_revenue - discounts - returns - credits - rebates)",
+    "asset_uri": "https://example.com/enterprise-ai/RevenueMart",
+    "catalog_id": "snowflake.finance.revenue_mart"
+  }
+]

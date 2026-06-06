@@ -1,0 +1,79 @@
+{
+  "name": "ActiveCustomer",
+  "displayName": "Active Customer",
+  "description": "A customer with at least one qualifying transaction in the trailing 12 months.",
+  "glossary": "EnterpriseBusinessVocabulary",
+  "synonyms": [],
+  "references": [
+    {
+      "name": "Ontology URI",
+      "endpoint": "https://example.com/enterprise-ai/ActiveCustomerTerm"
+    }
+  ],
+  "extension": {
+    "ontologyUri": "https://example.com/enterprise-ai/ActiveCustomerTerm",
+    "steward": "Growth Analytics",
+    "lastReviewedAt": "2025-10-01",
+    "reviewCadenceDays": "90"
+  }
+}
+{
+  "name": "Customer",
+  "displayName": "Customer",
+  "description": "A party with an active or historical commercial relationship with the enterprise.",
+  "glossary": "EnterpriseBusinessVocabulary",
+  "synonyms": [
+    "Buyer",
+    "Client"
+  ],
+  "references": [
+    {
+      "name": "Ontology URI",
+      "endpoint": "https://example.com/enterprise-ai/CustomerTerm"
+    }
+  ],
+  "extension": {
+    "ontologyUri": "https://example.com/enterprise-ai/CustomerTerm",
+    "steward": "Customer Data Council",
+    "lastReviewedAt": "2026-05-20",
+    "reviewCadenceDays": "90"
+  }
+}
+{
+  "name": "CustomerPIIPolicy",
+  "displayName": "Customer PII Policy",
+  "description": "Customer-identifying fields must be masked outside approved operational and compliance workflows.",
+  "glossary": "EnterpriseBusinessVocabulary",
+  "synonyms": [],
+  "references": [
+    {
+      "name": "Ontology URI",
+      "endpoint": "https://example.com/enterprise-ai/CustomerPIIPolicyTerm"
+    }
+  ],
+  "extension": {
+    "ontologyUri": "https://example.com/enterprise-ai/CustomerPIIPolicyTerm",
+    "steward": "Privacy Office",
+    "lastReviewedAt": "2026-05-30",
+    "reviewCadenceDays": "30"
+  }
+}
+{
+  "name": "NetRevenue",
+  "displayName": "Net Revenue",
+  "description": "Recognized gross revenue less contractual discounts, returns, credits, and rebates.",
+  "glossary": "EnterpriseBusinessVocabulary",
+  "synonyms": [],
+  "references": [
+    {
+      "name": "Ontology URI",
+      "endpoint": "https://example.com/enterprise-ai/NetRevenueTerm"
+    }
+  ],
+  "extension": {
+    "ontologyUri": "https://example.com/enterprise-ai/NetRevenueTerm",
+    "steward": "Finance Analytics",
+    "lastReviewedAt": "2026-04-15",
+    "reviewCadenceDays": "60"
+  }
+}

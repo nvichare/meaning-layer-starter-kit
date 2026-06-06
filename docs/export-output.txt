@@ -1,0 +1,1 @@
+Exported 4 catalog-ready glossary terms to catalog_sync/glossary_terms.csv

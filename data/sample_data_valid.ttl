@@ -1,0 +1,31 @@
+@prefix ex: <https://example.com/enterprise-ai/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:CustomerMasterTable a ex:DataAsset ;
+  ex:sourceSystem "Snowflake.PROD_CRM" ;
+  ex:assetType "Table" ;
+  ex:steward "Customer Data Platform Team" ;
+  ex:catalogId "snowflake.prod_crm.customer_master" ;
+  ex:supportsUseCase ex:CustomerSupportCopilot .
+
+ex:Customer360View a ex:DataAsset ;
+  ex:sourceSystem "dbt.analytics" ;
+  ex:assetType "View" ;
+  ex:steward "Growth Analytics" ;
+  ex:catalogId "analytics.customer_360" ;
+  ex:supportsUseCase ex:CustomerSupportCopilot .
+
+ex:RevenueMart a ex:DataAsset ;
+  ex:sourceSystem "Snowflake.FINANCE" ;
+  ex:assetType "Table" ;
+  ex:steward "Finance Data Products" ;
+  ex:catalogId "snowflake.finance.revenue_mart" ;
+  ex:supportsUseCase ex:RevenueVarianceAgent .
+
+ex:CustomerSupportCopilot a ex:AIUseCase ;
+  ex:steward "Support Automation" ;
+  ex:status "Approved" .
+
+ex:RevenueVarianceAgent a ex:AIUseCase ;
+  ex:steward "Finance Automation" ;
+  ex:status "Pilot" .

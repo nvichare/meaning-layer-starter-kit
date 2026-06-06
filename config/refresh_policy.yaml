@@ -1,0 +1,16 @@
+review_policy:
+  default_cadence_days: 90
+  critical_metrics_cadence_days: 30
+  privacy_policy_cadence_days: 30
+proposal_sources:
+  - schema_drift
+  - lineage_change
+  - steward_review_due
+  - catalog_search_no_result
+  - agent_low_confidence_answer
+  - data_quality_incident
+release_controls:
+  require_shacl_validation: true
+  require_steward_approval: true
+  require_lineage_impact_analysis: true
+  deprecate_instead_of_delete: true

@@ -1,0 +1,2 @@
+concept_uri,preferred_label,concept_type,definition,steward,status,last_reviewed_at,review_cadence_days,implemented_by_asset,depends_on_concept,governed_by_policy,priority,use_case,notes
+https://ontology.company.com/domain/example,Example Concept,EntityConcept,,,,Draft,,,,,High,,

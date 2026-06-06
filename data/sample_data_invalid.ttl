@@ -1,0 +1,16 @@
+@prefix ex: <https://example.com/enterprise-ai/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Invalid on purpose: missing steward and asset type.
+ex:UnownedCustomerExport a ex:DataAsset ;
+  ex:sourceSystem "S3.customer_exports" .
+
+# Invalid on purpose: metric lacks calculation logic and implementing asset.
+ex:ChurnRiskTerm a skos:Concept, ex:MetricConcept ;
+  skos:prefLabel "Churn Risk"@en ;
+  skos:definition "Probability that an active customer will stop transacting."@en ;
+  ex:steward "Retention Analytics" ;
+  ex:status "Candidate" ;
+  ex:lastReviewedAt "2026-04-01"^^xsd:date ;
+  ex:reviewCadenceDays 0 .

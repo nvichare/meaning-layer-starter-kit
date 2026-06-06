@@ -1,0 +1,5 @@
+Glossary,Term,Definition,Synonyms,Status,Steward,Ontology URI,Linked Assets
+Enterprise Business Vocabulary,Active Customer,A customer with at least one qualifying transaction in the trailing 12 months.,,Approved,Growth Analytics,https://example.com/enterprise-ai/ActiveCustomerTerm,https://example.com/enterprise-ai/Customer360View
+Enterprise Business Vocabulary,Customer,A party with an active or historical commercial relationship with the enterprise.,Buyer|Client,Approved,Customer Data Council,https://example.com/enterprise-ai/CustomerTerm,https://example.com/enterprise-ai/CustomerMasterTable
+Enterprise Business Vocabulary,Customer PII Policy,Customer-identifying fields must be masked outside approved operational and compliance workflows.,,Approved,Privacy Office,https://example.com/enterprise-ai/CustomerPIIPolicyTerm,
+Enterprise Business Vocabulary,Net Revenue,"Recognized gross revenue less contractual discounts, returns, credits, and rebates.",,Approved,Finance Analytics,https://example.com/enterprise-ai/NetRevenueTerm,https://example.com/enterprise-ai/RevenueMart

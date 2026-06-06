@@ -1,0 +1,97 @@
+@prefix ex: <https://example.com/enterprise-ai/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+ex:EnterpriseAIOntology a owl:Ontology ;
+  dct:title "Enterprise AI Meaning Layer Reference Ontology" ;
+  dct:description "A small practitioner-oriented ontology for governed enterprise AI context." ;
+  owl:versionInfo "0.1.0" .
+
+# Core conceptual model
+ex:BusinessConcept a owl:Class ; rdfs:label "Business concept" .
+ex:EntityConcept a owl:Class ; rdfs:subClassOf ex:BusinessConcept ; rdfs:label "Entity concept" .
+ex:MetricConcept a owl:Class ; rdfs:subClassOf ex:BusinessConcept ; rdfs:label "Metric concept" .
+ex:PolicyConcept a owl:Class ; rdfs:subClassOf ex:BusinessConcept ; rdfs:label "Policy concept" .
+ex:ProcessConcept a owl:Class ; rdfs:subClassOf ex:BusinessConcept ; rdfs:label "Process concept" .
+ex:Customer a owl:Class ; rdfs:subClassOf ex:EntityConcept ; rdfs:label "Customer" .
+ex:Account a owl:Class ; rdfs:subClassOf ex:EntityConcept ; rdfs:label "Account" .
+ex:Product a owl:Class ; rdfs:subClassOf ex:EntityConcept ; rdfs:label "Product" .
+ex:Contract a owl:Class ; rdfs:subClassOf ex:EntityConcept ; rdfs:label "Contract" .
+ex:DataAsset a owl:Class ; rdfs:label "Data asset" .
+ex:AIUseCase a owl:Class ; rdfs:label "AI use case" .
+ex:OntologyRelease a owl:Class ; rdfs:subClassOf prov:Entity ; rdfs:label "Ontology release" .
+ex:ChangeProposal a owl:Class ; rdfs:subClassOf prov:Entity ; rdfs:label "Change proposal" .
+
+# Relationships
+ex:hasAccount a owl:ObjectProperty ; rdfs:domain ex:Customer ; rdfs:range ex:Account ; rdfs:label "has account" .
+ex:implementedByAsset a owl:ObjectProperty ; rdfs:domain skos:Concept ; rdfs:range ex:DataAsset ; rdfs:label "implemented by data asset" .
+ex:governedByPolicy a owl:ObjectProperty ; rdfs:domain skos:Concept ; rdfs:range skos:Concept ; rdfs:label "governed by policy" .
+ex:dependsOnConcept a owl:ObjectProperty ; rdfs:domain skos:Concept ; rdfs:range skos:Concept ; rdfs:label "depends on concept" .
+ex:supportsUseCase a owl:ObjectProperty ; rdfs:domain ex:DataAsset ; rdfs:range ex:AIUseCase ; rdfs:label "supports AI use case" .
+ex:supersedes a owl:ObjectProperty ; rdfs:domain ex:OntologyRelease ; rdfs:range ex:OntologyRelease ; rdfs:label "supersedes" .
+ex:generatedProposal a owl:ObjectProperty ; rdfs:domain prov:Activity ; rdfs:range ex:ChangeProposal ; rdfs:label "generated proposal" .
+
+# Operational metadata
+ex:steward a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "steward" .
+ex:status a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "lifecycle status" .
+ex:calculationLogic a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "calculation logic" .
+ex:sourceSystem a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "source system" .
+ex:assetType a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "asset type" .
+ex:reviewCadenceDays a owl:DatatypeProperty ; rdfs:range xsd:integer ; rdfs:label "review cadence days" .
+ex:lastReviewedAt a owl:DatatypeProperty ; rdfs:range xsd:date ; rdfs:label "last reviewed at" .
+ex:effectiveFrom a owl:DatatypeProperty ; rdfs:range xsd:date ; rdfs:label "effective from" .
+ex:catalogId a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "catalog identifier" .
+
+# SKOS scheme is intentionally catalog-friendly.
+ex:EnterpriseBusinessVocabulary a skos:ConceptScheme ;
+  skos:prefLabel "Enterprise Business Vocabulary"@en .
+
+ex:CustomerTerm a skos:Concept, ex:EntityConcept ;
+  skos:inScheme ex:EnterpriseBusinessVocabulary ;
+  skos:prefLabel "Customer"@en ;
+  skos:altLabel "Client"@en, "Buyer"@en ;
+  skos:definition "A party with an active or historical commercial relationship with the enterprise."@en ;
+  ex:steward "Customer Data Council" ;
+  ex:status "Approved" ;
+  ex:lastReviewedAt "2026-05-20"^^xsd:date ;
+  ex:reviewCadenceDays 90 ;
+  ex:implementedByAsset ex:CustomerMasterTable ;
+  ex:governedByPolicy ex:CustomerPIIPolicyTerm .
+
+ex:ActiveCustomerTerm a skos:Concept, ex:EntityConcept ;
+  skos:inScheme ex:EnterpriseBusinessVocabulary ;
+  skos:broader ex:CustomerTerm ;
+  skos:prefLabel "Active Customer"@en ;
+  skos:definition "A customer with at least one qualifying transaction in the trailing 12 months."@en ;
+  ex:steward "Growth Analytics" ;
+  ex:status "Approved" ;
+  ex:lastReviewedAt "2025-10-01"^^xsd:date ;
+  ex:reviewCadenceDays 90 ;
+  ex:implementedByAsset ex:Customer360View ;
+  ex:dependsOnConcept ex:CustomerTerm .
+
+ex:NetRevenueTerm a skos:Concept, ex:MetricConcept ;
+  skos:inScheme ex:EnterpriseBusinessVocabulary ;
+  skos:prefLabel "Net Revenue"@en ;
+  skos:definition "Recognized gross revenue less contractual discounts, returns, credits, and rebates."@en ;
+  ex:calculationLogic "SUM(gross_revenue - discounts - returns - credits - rebates)" ;
+  ex:steward "Finance Analytics" ;
+  ex:status "Approved" ;
+  ex:lastReviewedAt "2026-04-15"^^xsd:date ;
+  ex:reviewCadenceDays 60 ;
+  ex:implementedByAsset ex:RevenueMart ;
+  ex:dependsOnConcept ex:CustomerTerm .
+
+ex:CustomerPIIPolicyTerm a skos:Concept, ex:PolicyConcept ;
+  skos:inScheme ex:EnterpriseBusinessVocabulary ;
+  skos:prefLabel "Customer PII Policy"@en ;
+  skos:definition "Customer-identifying fields must be masked outside approved operational and compliance workflows."@en ;
+  ex:steward "Privacy Office" ;
+  ex:status "Approved" ;
+  ex:lastReviewedAt "2026-05-30"^^xsd:date ;
+  ex:reviewCadenceDays 30 .

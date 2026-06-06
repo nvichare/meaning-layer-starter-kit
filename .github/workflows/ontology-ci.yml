@@ -1,0 +1,39 @@
+name: ontology-ci
+on:
+  pull_request:
+    paths:
+      - 'ontology/**'
+      - 'data/**'
+      - 'src/**'
+      - 'tests/**'
+  push:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Validate governed graph
+        run: python src/validate_graph.py --data data/sample_data_valid.ttl
+      - name: Query runtime context
+        run: python src/query_context.py revenue
+      - name: Generate refresh proposals
+        run: python src/propose_refresh.py --as-of 2026-06-05
+      - name: Export catalog glossary
+        run: python src/export_catalog_glossary.py
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Run test suite
+        run: python -m pytest tests/ -v --tb=short

@@ -1,0 +1,75 @@
+@prefix ex: <https://example.com/enterprise-ai/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:GovernedConceptShape a sh:NodeShape ;
+  sh:targetClass skos:Concept ;
+  sh:property [
+    sh:path skos:prefLabel ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype rdf:langString ;
+    sh:message "Every governed concept must have exactly one preferred label with a language tag." ;
+  ] ;
+  sh:property [
+    sh:path skos:definition ;
+    sh:minCount 1 ;
+    sh:message "Every governed concept requires an explicit business definition." ;
+  ] ;
+  sh:property [
+    sh:path ex:steward ;
+    sh:minCount 1 ;
+    sh:message "Every governed concept requires an accountable steward." ;
+  ] ;
+  sh:property [
+    sh:path ex:status ;
+    sh:minCount 1 ;
+    sh:in ( "Draft" "Approved" "Deprecated" ) ;
+    sh:message "Lifecycle status must be Draft, Approved, or Deprecated." ;
+  ] ;
+  sh:property [
+    sh:path ex:lastReviewedAt ;
+    sh:minCount 1 ;
+    sh:datatype xsd:date ;
+    sh:message "Every governed concept must record its last review date." ;
+  ] ;
+  sh:property [
+    sh:path ex:reviewCadenceDays ;
+    sh:minCount 1 ;
+    sh:datatype xsd:integer ;
+    sh:minInclusive 1 ;
+    sh:message "Every governed concept requires a positive review cadence." ;
+  ] .
+
+ex:MetricConceptShape a sh:NodeShape ;
+  sh:targetClass ex:MetricConcept ;
+  sh:property [
+    sh:path ex:calculationLogic ;
+    sh:minCount 1 ;
+    sh:message "A governed metric requires deterministic calculation logic." ;
+  ] ;
+  sh:property [
+    sh:path ex:implementedByAsset ;
+    sh:minCount 1 ;
+    sh:message "A governed metric must link to at least one implementing data asset." ;
+  ] .
+
+ex:DataAssetShape a sh:NodeShape ;
+  sh:targetClass ex:DataAsset ;
+  sh:property [
+    sh:path ex:sourceSystem ;
+    sh:minCount 1 ;
+    sh:message "Each data asset requires a source system." ;
+  ] ;
+  sh:property [
+    sh:path ex:assetType ;
+    sh:minCount 1 ;
+    sh:message "Each data asset requires an asset type." ;
+  ] ;
+  sh:property [
+    sh:path ex:steward ;
+    sh:minCount 1 ;
+    sh:message "Each data asset requires an accountable owner or steward." ;
+  ] .

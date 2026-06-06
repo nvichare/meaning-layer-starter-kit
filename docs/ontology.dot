@@ -1,0 +1,24 @@
+
+digraph G {
+ graph [bgcolor="transparent", rankdir=LR, pad="0.4", nodesep="0.6", ranksep="0.9"];
+ node [shape=box style="rounded,filled" fontname="DejaVu Sans" fontsize=14 margin="0.18,0.12" color="#dfe6ef" fontcolor="#212b36"];
+ edge [fontname="DejaVu Sans" fontsize=11 color="#68778a" fontcolor="#536273" arrowsize=0.8];
+ Customer [fillcolor="#e8f1ff"];
+ ActiveCustomer [label="Active Customer" fillcolor="#e8f1ff"];
+ NetRevenue [label="Net Revenue" fillcolor="#eefaf4"];
+ PIIPolicy [label="Customer PII Policy" fillcolor="#fff3e0"];
+ CustomerMaster [label="Customer Master Table" fillcolor="#f5f2ff"];
+ Customer360 [label="Customer 360 View" fillcolor="#f5f2ff"];
+ RevenueMart [label="Revenue Mart" fillcolor="#f5f2ff"];
+ SupportCopilot [label="Support Copilot" fillcolor="#fdeff3"];
+ RevenueAgent [label="Revenue Variance Agent" fillcolor="#fdeff3"];
+ ActiveCustomer -> Customer [label="broader"];
+ Customer -> CustomerMaster [label="implementedByAsset"];
+ ActiveCustomer -> Customer360 [label="implementedByAsset"];
+ NetRevenue -> RevenueMart [label="implementedByAsset"];
+ NetRevenue -> Customer [label="dependsOnConcept"];
+ Customer -> PIIPolicy [label="governedByPolicy"];
+ CustomerMaster -> SupportCopilot [label="supportsUseCase"];
+ Customer360 -> SupportCopilot [label="supportsUseCase"];
+ RevenueMart -> RevenueAgent [label="supportsUseCase"];
+}

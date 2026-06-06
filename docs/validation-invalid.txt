@@ -1,0 +1,49 @@
+SHACL conforms: False
+Triples validated: 177
+
+Validation report
+-----------------
+Validation Report
+Conforms: False
+Results (6):
+Constraint Violation in InConstraintComponent (http://www.w3.org/ns/shacl#InConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:in ( Literal("Draft") Literal("Approved") Literal("Deprecated") ) ; sh:message Literal("Lifecycle status must be Draft, Approved, or Deprecated.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path ex:status ]
+	Focus Node: ex:ChurnRiskTerm
+	Value Node: Literal("Candidate")
+	Result Path: ex:status
+	Message: Lifecycle status must be Draft, Approved, or Deprecated.
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:message Literal("A governed metric must link to at least one implementing data asset.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path ex:implementedByAsset ]
+	Focus Node: ex:ChurnRiskTerm
+	Result Path: ex:implementedByAsset
+	Message: A governed metric must link to at least one implementing data asset.
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:message Literal("A governed metric requires deterministic calculation logic.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path ex:calculationLogic ]
+	Focus Node: ex:ChurnRiskTerm
+	Result Path: ex:calculationLogic
+	Message: A governed metric requires deterministic calculation logic.
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:message Literal("Each data asset requires an accountable owner or steward.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path ex:steward ]
+	Focus Node: ex:UnownedCustomerExport
+	Result Path: ex:steward
+	Message: Each data asset requires an accountable owner or steward.
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:message Literal("Each data asset requires an asset type.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path ex:assetType ]
+	Focus Node: ex:UnownedCustomerExport
+	Result Path: ex:assetType
+	Message: Each data asset requires an asset type.
+Constraint Violation in MinInclusiveConstraintComponent (http://www.w3.org/ns/shacl#MinInclusiveConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:datatype xsd:integer ; sh:message Literal("Every governed concept requires a positive review cadence.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:minInclusive Literal("1", datatype=xsd:integer) ; sh:path ex:reviewCadenceDays ]
+	Focus Node: ex:ChurnRiskTerm
+	Value Node: Literal("0", datatype=xsd:integer)
+	Result Path: ex:reviewCadenceDays
+	Message: Every governed concept requires a positive review cadence.
+
+Wrote validation-report.ttl
+exit_code=1

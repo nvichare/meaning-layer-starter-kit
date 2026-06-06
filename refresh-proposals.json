@@ -1,0 +1,10 @@
+[
+  {
+    "type": "REVIEW_OVERDUE",
+    "concept": "https://example.com/enterprise-ai/ActiveCustomerTerm",
+    "label": "Active Customer",
+    "last_reviewed": "2025-10-01",
+    "review_due": "2025-12-30",
+    "recommended_action": "Assign steward review task and run lineage impact analysis before republishing."
+  }
+]
